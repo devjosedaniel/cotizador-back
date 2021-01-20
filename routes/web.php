@@ -18,6 +18,11 @@ $router->get('/prueba', function(){
     return phpinfo();
 });
 
+$router->get('usuario', 'UsuarioController@index');
+$router->post('usuario', 'UsuarioController@store');
+$router->get('usuario/{id}', 'UsuarioController@show');
+$router->post('usuario/auth','UsuarioController@auth');
+
 $router->get('producto', 'ProductoController@index');
 $router->post('producto', 'ProductoController@store');
 $router->get('producto/{id}', 'ProductoController@show');
