@@ -16,6 +16,7 @@ class CreateCotizacionesTable extends Migration
         Schema::create('cotizaciones', function (Blueprint $table) {
             $table->id();
             $table->date('fecha')->useCurrent();
+            $table->string('secuencia')->nullable(false);
             $table->boolean('anulado')->default(false);
             $table->bigInteger('cliente_id')->unsigned()->nullable(false);
             $table->foreign('cliente_id')->references('id')->on('clientes');

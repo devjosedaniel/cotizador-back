@@ -6,6 +6,7 @@ use App\Cliente;
 use App\Cotizacion;
 use App\CotizacionDetalle;
 use App\Producto;
+use App\Secuencia;
 use Illuminate\Http\Request;
 class CotizacionController extends Controller
 {
@@ -30,7 +31,7 @@ class CotizacionController extends Controller
             'detalles' => 'required|array'
 
         ]);
-        $cliente = $data['cliente'];
+        $cliente = isset($data['cliente'])? $data['cliente']: [];
         if(empty($cliente)){
             $existeCliente = Cliente::where(['estado'=>true,'identificador'=>$data['identificador']])->first();
             if(!$existeCliente){
@@ -42,8 +43,10 @@ class CotizacionController extends Controller
                 $cliente = $existeCliente;
             }
         }
+
         $cotizacion = new Cotizacion();
         $cotizacion->fecha = date('Y/m/d', strtotime($data['fecha']));
+        $cotizacion->secuencia = str_pad(Secuencia::obtenerNumero('cotizacion'), 10, "0", STR_PAD_LEFT); ;
         $cotizacion->cliente_id = $cliente['id'];
         $cotizacion->valortotal = $data['valortotal'];
         $cotizacion->valorsubtotal = $data['valorsubtotal'];
