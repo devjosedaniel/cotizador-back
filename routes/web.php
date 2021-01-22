@@ -14,14 +14,14 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
-$router->get('/prueba', function(){
+$router->get('/prueba', function () {
     return phpinfo();
 });
 
 $router->get('usuario', 'UsuarioController@index');
 $router->post('usuario', 'UsuarioController@store');
 $router->get('usuario/{id}', 'UsuarioController@show');
-$router->post('usuario/auth','UsuarioController@auth');
+$router->post('usuario/auth', 'UsuarioController@auth');
 
 $router->get('producto', 'ProductoController@index');
 $router->post('producto', 'ProductoController@store');
@@ -44,6 +44,6 @@ $router->delete('cliente/{id}', 'ClienteController@delete');
 
 $router->post('cotizacion', 'CotizacionController@store');
 $router->get('cotizacion', 'CotizacionController@index');
-$router->get('cotizacion/{id}','CotizacionController@show');
-$router->get('cotizacion/{id}/pdf','CotizacionController@pdf');
-$router->get('cotizacion/{id}/anular','CotizacionController@anular');
+$router->get('cotizacion/{id}', 'CotizacionController@show');
+$router->get('cotizacion/{id}/pdf', 'CotizacionController@pdf');
+$router->put('cotizacion/{id}/anular', 'CotizacionController@anular');

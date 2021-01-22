@@ -13,7 +13,7 @@ class ProductoController extends Controller
 
     public function index()
     {
-        $productos = Producto::whereEstado(true)->get();
+        $productos = Producto::whereEstado(true)->orderBy('nombre')->get();
         foreach ($productos as $p) {
             $p->categoria = $p->categoria;
         }

@@ -28,7 +28,7 @@ class ClienteController extends Controller
     }
     public function index()
     {
-        $clientes = Cliente::whereEstado(true)->get();
+        $clientes = Cliente::whereEstado(true)->orderBy('nombre')->get();
         return response()->json(['ok' => true, 'clientes' => $clientes], 200);
     }
     public function show($id)

@@ -10,7 +10,7 @@ class CategoriaController extends Controller
 
     public function index()
     {
-        $categorias = Categoria::whereEstado(true)->get();
+        $categorias = Categoria::whereEstado(true)->orderBy('nombre')->get();
         return response()->json(['ok' => true, 'categorias' => $categorias], 200);
     }
 

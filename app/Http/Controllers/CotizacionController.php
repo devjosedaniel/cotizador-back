@@ -13,7 +13,7 @@ class CotizacionController extends Controller
 {
     public function index()
     {
-        $cotizaciones = Cotizacion::whereEstado(true)->get();
+        $cotizaciones = Cotizacion::whereEstado(true)->orderByDesc('secuencia')->get();
         foreach ($cotizaciones as $c) {
             $c->cliente = $c->cliente;
         }
