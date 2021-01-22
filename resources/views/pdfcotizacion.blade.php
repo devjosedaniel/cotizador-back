@@ -138,7 +138,7 @@
 <body>
     <div id="watermark">
         {{-- <img src="http://cotizador.test/img/bg-cotiz.png" height="100%" width="100%" /> --}}
-        <img src="img/bg-cotiz.png" height="100%" width="100%" />
+        <img src="{{ $background }}" height="100%" width="100%" />
     </div>
     <header>
         <h1 class="titulo">COTIZACIÓN</h1>

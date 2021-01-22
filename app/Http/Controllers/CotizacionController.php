@@ -7,7 +7,6 @@ use App\Cotizacion;
 use App\CotizacionDetalle;
 use App\Producto;
 use Illuminate\Http\Request;
-
 class CotizacionController extends Controller
 {
     public function index(){
@@ -81,11 +80,12 @@ class CotizacionController extends Controller
 
     public function pdf($id){
         $cotizacion = Cotizacion::detallesCompletos($id);
+        $background = app('url')->asset('img/bg-cotiz.jpg');
         $pdf = app('dompdf.wrapper');
         // $pdf->loadHTML('<h1>Styde.net</h1>');
-        $pdf->loadView('pdfcotizacion',['cotizacion'=>$cotizacion]);
-        // return $pdf->download('cotizacion.pdf');
-        return $pdf->stream();
+        $pdf->loadView('pdfcotizacion',['cotizacion'=>$cotizacion, 'background'=>$background]);
+        return $pdf->download('cotizacion.pdf');
+        // return $pdf->stream();
     }
 
 }
