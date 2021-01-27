@@ -46,4 +46,4 @@ $router->post('cotizacion', 'CotizacionController@store');
 $router->get('cotizacion', 'CotizacionController@index');
 $router->get('cotizacion/{id}', 'CotizacionController@show');
 $router->get('cotizacion/{id}/pdf', 'CotizacionController@pdf');
-$router->put('cotizacion/{id}/anular', 'CotizacionController@anular');
+$router->delete('cotizacion/{id}/anular', 'CotizacionController@anular');

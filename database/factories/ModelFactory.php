@@ -4,7 +4,7 @@
 
 use App\User;
 use Faker\Generator as Faker;
-
+use Illuminate\Support\Facades\Crypt;
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -18,7 +18,10 @@ use Faker\Generator as Faker;
 
 $factory->define(User::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->email,
+        'nombre' => 'José Daniel Pozo',
+        'email' => 'jose_daniel@outlook.com',
+        'password' => Crypt::encrypt('josedaniel'),
+        // 'remember_token' => \Illuminate\Support\Str::random(10),
+        // 'api_token' => \Illuminate\Support\Str::random(10)
     ];
 });

@@ -17,8 +17,10 @@ class CreateUsuariosTable extends Migration
             $table->engine = 'InnoDB';
             $table->id();
             $table->string('nombre');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('password');
+            // $table->rememberToken();
+            // $table->string('api_token')->unique();
             $table->boolean('estado')->default(true);
             $table->timestamps();
         });

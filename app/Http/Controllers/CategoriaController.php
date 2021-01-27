@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $categorias = Categoria::whereEstado(true)->orderBy('nombre')->get();

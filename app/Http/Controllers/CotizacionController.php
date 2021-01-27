@@ -11,6 +11,10 @@ use Illuminate\Http\Request;
 
 class CotizacionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $cotizaciones = Cotizacion::whereEstado(true)->orderByDesc('secuencia')->get();
