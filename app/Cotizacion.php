@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-Use App\Producto;
+use App\Producto;
 
 class Cotizacion extends Model
 {
@@ -14,16 +14,21 @@ class Cotizacion extends Model
     {
         return $this->hasMany('App\CotizacionDetalle');
     }
-    public function cliente(){
-        return $this->belongsTo('App\Cliente','cliente_id');
+    public function cliente()
+    {
+        return $this->belongsTo('App\Cliente', 'cliente_id');
     }
-    static function detallesCompletos($id){
+    static function detallesCompletos($id)
+    {
         $cotizacion = Cotizacion::find($id);
+        if (!$cotizacion) {
+            return null;
+        }
         $cotizacion->cliente = $cotizacion->cliente;
         $cotizacion->detalles = $cotizacion->detalles;
         // $cotizacion->detalles->producto = $cotizacion->detalles->producto;
-        $i=0;
-        foreach($cotizacion->detalles as $d){
+        $i = 0;
+        foreach ($cotizacion->detalles as $d) {
             $producto = Producto::find($d->producto_id);
             $cotizacion->detalles[$i]->producto = $producto;
             $i++;

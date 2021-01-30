@@ -13,7 +13,7 @@ class CotizacionController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['pdf']]);
     }
     public function index()
     {
@@ -91,12 +91,13 @@ class CotizacionController extends Controller
     public function pdf($id)
     {
         $cotizacion = Cotizacion::detallesCompletos($id);
-        $background = app('url')->asset('img/bg-cotiz.jpg');
+        if (!$cotizacion) {
+            return response()->json(['ok' => false, 'mensaje' => 'Cotización no existe.'], 400);
+        }
         $pdf = app('dompdf.wrapper');
-        // $pdf->loadHTML('<h1>Styde.net</h1>');
-        $pdf->loadView('pdfcotizacion', ['cotizacion' => $cotizacion, 'background' => $background]);
-        return $pdf->download('cotizacion.pdf');
-        // return $pdf->stream();
+        $pdf->loadView('pdfcotizacion', ['cotizacion' => $cotizacion]);
+        // return $pdf->download('cotizacion.pdf');
+        return $pdf->stream();
     }
 
     public function anular($id)

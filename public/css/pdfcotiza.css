@@ -1,0 +1,121 @@
+     @page {
+         margin: 0cm 0cm;
+         font-size: 1em;
+     }
+     
+     body {
+         margin: 8cm 2cm 4cm;
+     }
+     
+     #watermark {
+         position: fixed;
+         bottom: 0px;
+         left: 0px;
+         width: 210mm;
+         height: 297mm;
+         z-index: -1000;
+     }
+     
+     .page-break {
+         page-break-after: always;
+     }
+     
+     header {
+         position: fixed;
+         top: 0cm;
+         left: 0cm;
+         right: 0cm;
+         height: 7cm;
+         text-align: center;
+         color: black;
+         line-height: 30px;
+     }
+     
+     footer {
+         position: fixed;
+         bottom: 0cm;
+         left: 0cm;
+         right: 0cm;
+         height: 4cm;
+         color: white;
+         text-align: center;
+         line-height: 35px;
+     }
+     /* css de bootstrap */
+     
+     @media (min-width: 768px) .container,
+     .container-md,
+     .container-sm {
+         max-width: 720px;
+     }
+     
+     @media (min-width: 576px) .container,
+     .container-sm {
+         max-width: 540px;
+     }
+     
+     .container {
+         width: 100%;
+         padding-right: var(--bs-gutter-x, .75rem);
+         padding-left: var(--bs-gutter-x, .75rem);
+         margin-right: auto;
+         margin-left: auto;
+     }
+     
+     .table {
+         --bs-table-bg: transparent;
+         --bs-table-striped-color: #212529;
+         --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
+         --bs-table-active-color: #212529;
+         --bs-table-active-bg: rgba(0, 0, 0, 0.1);
+         --bs-table-hover-color: #212529;
+         --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+         width: 100%;
+         margin-bottom: 1rem;
+         color: #212529;
+         vertical-align: top;
+         border-color: #dee2e6;
+     }
+     
+     .table>thead {
+         vertical-align: bottom;
+     }
+     
+     tbody,
+     td,
+     tfoot,
+     th,
+     thead,
+     tr {
+         border-color: inherit;
+         border-style: solid;
+         border-width: 0;
+     }
+     
+     *,
+      ::after,
+      ::before {
+         box-sizing: border-box;
+     }
+     
+     thead {
+         display: table-header-group;
+         vertical-align: middle;
+         border-color: inherit;
+     }
+     
+     .table>:not(:last-child)>:last-child>* {
+         border-bottom-color: currentColor;
+     }
+     
+     .table>:not(caption)>*>* {
+         padding: .5rem .5rem;
+         background-color: var(--bs-table-bg);
+         background-image: linear-gradient(var(--bs-table-accent-bg), var(--bs-table-accent-bg));
+         border-bottom-width: 1px;
+     }
+     
+     .table-striped>tbody>tr:nth-of-type(odd) {
+         --bs-table-accent-bg: var(--bs-table-striped-bg);
+         color: var(--bs-table-striped-color);
+     }
